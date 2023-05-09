@@ -1,15 +1,5 @@
-# Image yang digunakan
-FROM node:16-alpine
-
-# Working directory
+FROM node:lts
 WORKDIR /app
-
-# Install dependencies
-COPY package*.json ./
-RUN npm install --production
-
-# Copy the app
-COPY app-prod.js .
-
-# Menjalankan aplikasi
-CMD ["npm", "start"]
+ADD . /app
+EXPOSE 80
+CMD ["node", "app-prod.js"]
